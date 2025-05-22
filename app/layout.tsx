@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: { default: "LBRSS", template: "%s | LBRSS" },
   description: "Luke Barnes Racket Stringing Services",
   keywords: ["Squash", "Paddle", "Racket", "Stringing", "Badminton"],
-  manifest: "https://lbrss.haki-tech.com/site.webmanifest",
+  manifest: "https://lbrss.com/site.webmanifest",
   icons: {
     icon: [
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
@@ -22,13 +22,13 @@ export const metadata: Metadata = {
     apple: { url: "/apple-touch-icon.png", sizes: "180x180" },
   },
   openGraph: {
-    url: "https://lbrss.haki-tech.com",
+    url: "https://lbrss.com",
     type: "website",
     title: "LBRSS",
     description: "Luke Barnes Racket Stringing Services",
     images: [
       {
-        url: "https://lbrss.haki-tech.com/android-chrome-512x512.png",
+        url: "https://lbrss.com/android-chrome-512x512.png",
         type: "image/png",
         width: 512,
         height: 512,
