@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   output: "export",
   reactStrictMode: true,
-  basePath: "/lbrss2",
+  basePath: "/lbracketstringingservices",
 };
 
 export default nextConfig;
