@@ -40,7 +40,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-  robots: "noai, noimageai",
 };
 
 export const viewport: Viewport = {
