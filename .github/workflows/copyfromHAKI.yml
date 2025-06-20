@@ -1,37 +1,51 @@
-name: Sync from haki-tech
+name: Sync haki to lbrss
 
 on:
   workflow_dispatch:
 
 jobs:
-  sync:
+  sync-haki:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout lbrss (Ziel-Repo)
-        uses: actions/checkout@v4
-
-      - name: Checkout haki-tech (Source-Repo)
+      - name: Checkout target repo (lbrss/lbracketstringingservices)
         uses: actions/checkout@v4
         with:
-          repository: kjhgithub/lbrss2
-          path: haki-source
-          # token: ${{ secrets.HAKI_PAT }} # Personal Access Token mit read access auf haki-tech
+          persist-credentials: false
 
-      - name: Synchronize files from haki to lbrss
+      - name: Clone haki repository
         run: |
-          rsync -av --delete \
-            --exclude='.*' \
-            --exclude='next.config.ts' \
-            --exclude='README.md' \
-            --exclude='public/site.webmanifest' \
-            --exclude='public/CNAME' \
-            haki-source/ ./
+          git clone https://github.com/haki-tech/lbrss2.git haki-source
+
+      - name: Clean up unwanted files and folders
+        run: |
+          rm -f haki-source/next.config.ts
+          rm -f haki-source/README.md
+          rm -f haki-source/public/site.webmanifest
+          rm -f haki-source/public/CNAME
+          rm -rf haki-source/.github
+          rm -rf haki-source/.git
+
+          # Entferne alle versteckten Dateien und Ordner im haki-source Verzeichnis
+          rm -rf haki-source/.* 2> /dev/null || true
+
+      - name: Prepare snapshot after cleanup
+        run: |
+          cp -r haki-source haki-snapshot
+
+      - name: Synchronize files from snapshot to target repo
+        run: |
+          rsync -av --delete haki-snapshot/ ./
 
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add .
-          git diff --cached --quiet || git commit -m "Sync from haki-tech at $(date -u +"%Y-%m-%d %H:%M:%S UTC") (Automated)"
-          git push
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Sync from haki-tech at $(date -u +"%Y-%m-%d %H:%M:%S UTC")"
+            git push
+          fi
