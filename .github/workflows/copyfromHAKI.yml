@@ -21,11 +21,11 @@ jobs:
       - name: Synchronize files from haki to lbrss
         run: |
           rsync -av --delete \
+            --exclude='.*' \
             --exclude='next.config.ts' \
             --exclude='README.md' \
             --exclude='public/site.webmanifest' \
             --exclude='public/CNAME' \
-            --exclude='.github/' \
             haki-source/ ./
 
       - name: Commit and push changes
