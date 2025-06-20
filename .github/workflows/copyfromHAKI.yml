@@ -25,9 +25,7 @@ jobs:
           rm -f haki-source/public/CNAME
           rm -rf haki-source/.github
           rm -rf haki-source/.git
-
-          # Entferne alle versteckten Dateien und Ordner im haki-source Verzeichnis
-          rm -rf haki-source/.* 2> /dev/null || true
+          find haki-source -mindepth 1 -maxdepth 1 -name ".*" -exec rm -rf {} +
 
       - name: Prepare snapshot after cleanup
         run: |
