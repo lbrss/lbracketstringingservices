@@ -16,8 +16,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: { default: "LBRSS", template: "%s | LBRSS" },
-  description: "Luke Barnes Racket Stringing Services",
-  keywords: ["Squash", "Paddle", "Racket", "Stringing", "Badminton"],
+  // description: "Luke Barnes Racket Stringing Services",
+  // keywords: ["Squash", "Paddle", "Racket", "Stringing", "Badminton"],
   manifest: "https://lbrss.com/site.webmanifest",
   icons: {
     icon: [
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     ],
     apple: { url: "/apple-touch-icon.png", sizes: "180x180" },
   },
-  openGraph: {
+  /* openGraph: {
     url: "https://lbrss.com",
     type: "website",
     title: "LBRSS",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
         height: 512,
       },
     ],
-  },
+  }, */
 };
 
 export const viewport: Viewport = {
@@ -53,6 +53,43 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de">
+      <head>
+        <meta
+          name="keywords"
+          content="Squash,Paddle,Racket,Stringing,Badminton"
+        />
+        <meta
+          name="description"
+          content="Luke Barnes Racket Stringing Services"
+        />
+        <meta property="og:title" content="LBRSS" />
+        <meta
+          property="og:description"
+          content="Luke Barnes Racket Stringing Services"
+        />
+        <meta property="og:url" content="https://lbrss.com" />
+        <meta
+          property="og:image"
+          content="https://lbrss.com/android-chrome-512x512.png"
+        />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="512" />
+        <meta property="og:image:height" content="512" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="LBRSS" />
+        <meta
+          name="twitter:description"
+          content="Luke Barnes Racket Stringing Services"
+        />
+        <meta
+          name="twitter:image"
+          content="https://lbrss.com/android-chrome-512x512.png"
+        />
+        <meta name="twitter:image:type" content="image/png" />
+        <meta name="twitter:image:width" content="512" />
+        <meta name="twitter:image:height" content="512" />
+      </head>
       <body
         className={`${inter.className} antialiased bg-[#21333a] text-white`}
       >
