@@ -16,7 +16,7 @@ jobs:
         with:
           repository: kjhgithub/lbrss2
           path: haki-source
-          token: ${{ secrets.HAKI_PAT }} # Personal Access Token mit read access auf haki-tech
+          # token: ${{ secrets.HAKI_PAT }} # Personal Access Token mit read access auf haki-tech
 
       - name: Synchronize files from haki to lbrss
         run: |
