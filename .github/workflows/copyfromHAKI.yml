@@ -11,7 +11,7 @@ jobs:
       - name: Checkout target repo (lbrss/lbracketstringingservices)
         uses: actions/checkout@v4
         with:
-          persist-credentials: true
+          token: ${{ secrets.PAT }}
 
       - name: Clone source repo (kjhgithub/lbrss2)
         run: |
