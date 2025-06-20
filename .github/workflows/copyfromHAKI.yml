@@ -15,7 +15,7 @@ jobs:
 
       - name: Clone haki repository
         run: |
-          git clone https://github.com/haki-tech/lbrss2.git haki-source
+          git clone https://github.com/kjhgithub/lbrss2.git haki-source
 
       - name: Clean up unwanted files and folders
         run: |
