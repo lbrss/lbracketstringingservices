@@ -35,7 +35,7 @@ jobs:
 
       - name: Synchronize files from snapshot to target repo
         run: |
-          rsync -av --delete haki-snapshot/ ./
+          rsync -av --delete --ignore-missing-args haki-snapshot/ ./ || echo "rsync warning ignored"
 
       - name: Commit and push changes
         run: |
